@@ -1,0 +1,15 @@
+
+#version 460
+
+layout (location=0) in vec2 coords;
+layout (location=1) in vec2 TextureCoordinates;
+
+uniform vec4 size;
+uniform vec4 location;
+
+out vec2 TextureoutCoordinates;
+
+void main() {
+gl_Position = vec4(coords,0.0,1.0)*size+location;
+TextureoutCoordinates = TextureCoordinates;
+}
