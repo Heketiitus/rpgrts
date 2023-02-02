@@ -5,9 +5,11 @@ import org.lwjgl.glfw.GLFWFramebufferSizeCallbackI;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
+import rpgrts.Config;
 import rpgrts.GameState;
 import rpgrts.Loader;
 import rpgrts.MainMenu;
+import rpgrts.Renderer;
 
 public class main {
 	
@@ -15,10 +17,10 @@ public class main {
 		new main();
 	}
 	
-	static final int targetfps = 60;
+	static int targetfps;
 
 	static final long second = 1000000000;
-	static final long frame = second/targetfps;
+	static long frame;
 	double frames = 0;
 	long lastframe;
 	long start;
@@ -26,15 +28,12 @@ public class main {
 	int k;
 	public static  boolean everysecond = false;
 
+	public static int rwidth,rheight;
+	
 	public static int width = 100;
 	public static int height =500;
 	
-	public static int[] textureatlas1;
-	public static int ukkeli;
-	public static int ukkeli2;
-	
-	public static int rwidth = 1366;
-	public static int rheight = 768;
+	Config config;
 	
 	Loader loader;
 	GameState current;
@@ -47,8 +46,9 @@ public class main {
 	
 	public main() {
 		init();
-		
-		changestate(new MainMenu());
+		Renderer renderer = new Renderer();
+		renderer.init();
+		changestate(new MainMenu(renderer));
 		
 		System.out.println(System.nanoTime()/second);
 		long start = System.nanoTime();
@@ -73,10 +73,15 @@ public class main {
 			GLFW.glfwPollEvents();
 		}
 		cleanUp();
-		System.out.println("program ran for " + (System.nanoTime()-start)/second + " seconds, probably, totaling " + k + " frames, " + (System.nanoTime()-start)/second*60);
+		System.out.println("program ran for " + (System.nanoTime()-start)/second + " seconds, probably, totaling " + k + " frames, " + (System.nanoTime()-start)/second*targetfps);
 	}
 	
 	public void init() {
+		config = Config.loadConfig("config.txt");
+		rwidth = config.getWidth();
+		rheight = config.getHeight();
+		targetfps = config.getTps();
+		frame = second/targetfps;
 		GLFW.glfwInit();
 		window = GLFW.glfwCreateWindow(rwidth, rheight, "he", 0, 0);
 		GLFW.glfwMakeContextCurrent(window);
@@ -92,12 +97,9 @@ public class main {
 		GL.createCapabilities();
 		loader = new Loader();	
 
-		//ukkeli = loader.loadTexture("res/textures/rölli.png");
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA); 
 		GL11.glEnable(GL11.GL_BLEND);
-		textureatlas1 = loader.loadTextureAtlas("res/textures/tileset.png",32,32);
-		ukkeli = loader.loadTexture("res/textures/rölli.png");
-		//textureatlas1 = loader.loadTextureAtlas("res/textures/tileset.png", 32, 32);
+		loader.loadTextures();
 		
 	}
 	

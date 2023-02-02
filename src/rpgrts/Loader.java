@@ -18,7 +18,22 @@ import org.lwjgl.opengl.GL30;
 
 public class Loader {
 
-	public int loadTexture(String src) {
+	public static int[] textureatlas1;
+	public static int ukkeli;
+	public static int menubackground;
+	public static int playbutton;
+	public static int settingsbutton;
+	public static int quitbutton;
+	
+	public void loadTextures() {
+		textureatlas1 = loadTextureSheet("res/textures/tileset.png",32,32);
+		ukkeli = loadTexture("res/textures/rölli.png");
+		menubackground = loadTexture("res/textures/menubackground.png");
+		playbutton = loadTexture("res/textures/play.png");
+		settingsbutton = loadTexture("res/textures/settings.png");
+	}
+	
+	public static int loadTexture(String src) {
 		File file = new File(src);
 		if(file.exists()) {
 			try {
@@ -59,7 +74,7 @@ public class Loader {
 		return 0;
 	}
 	//TODO do this better
-	public int[] loadTextureAtlas(String src, int iw,int ih) {
+	public static int[] loadTextureSheet(String src, int iw,int ih) {
 		File file = new File(src);
 		if(file.exists()) {
 			try {
@@ -106,5 +121,7 @@ public class Loader {
 			System.out.println("could not find file " + src);
 		}return null;
 	}
+	
 
+	
 }

@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL20;
 
 public class Shader {
 	
-	int program;
+	public int program;
 	int vertexShader;
 	int fragmentShader;
 	
