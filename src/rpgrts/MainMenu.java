@@ -31,7 +31,7 @@ public class MainMenu extends Menu {
 	
 	public int getUniform(int program, String name) throws StupidException{
 		int uniform = GL20.glGetUniformLocation(s.program, name);
-		if(uniform==-1)throw new StupidException("shithi");
+		if(uniform==-1)throw new StupidException("uniform name probably wrong");
 		return uniform;
 	}
 	
@@ -45,7 +45,7 @@ public class MainMenu extends Menu {
 		//uniform = GL20.glGetUniformLocation(s.vertexShader, "transformation");
 		try{
 			sizeuniform = getUniform(s.program, "size");
-			positionuniform = getUniform(s.program,"location");
+			positionuniform = getUniform(s.program,"locatiion");
 		}catch(StupidException e) {
 			e.printStackTrace();
 		}
@@ -95,28 +95,9 @@ public class MainMenu extends Menu {
 		if(x*size*widthm>2)texture=0;
 		GL20.glUniform4fv(sizeuniform, new float[] {10*size*widthm,10*size*heightm,1.0f,1.0f});
 		GL20.glUniform4fv(positionuniform, new float[] {x*size*widthm,y*size*heightm,0.0f,0.0f});
-		//GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_LINE)
-		
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		if(main.everysecond) texture++;
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D,main.ukkeli);	 
-		
-		/*GL11.glBegin(GL11.GL_TRIANGLES);
-		
-		//GL11.glVertex2f(-1f, -1f);GL11.glTexCoord2f(0.0f,0.0f);
-		//GL11.glVertex2f(-1f,1f);GL11.glTexCoord2f(0.0f,1.0f);
-		//GL11.glVertex2f(1f,-1f);GL11.glTexCoord2f(1.0f,0.0f);
-		//GL11.glVertex2f(1f,1f);GL11.glTexCoord2f(1.0f,1.0f);
-		
-
-		GL11.glVertex2f(1.0f,-1.0f);GL11.glTexCoord2f(1.0f,0.0f);
-		GL11.glVertex2f(-1.0f, -1.0f);GL11.glTexCoord2f(0.0f,0.0f);
-		GL11.glVertex2f(-1.0f,1.0f);GL11.glTexCoord2f(0.0f,1.0f);
-		GL11.glVertex2f(1.0f,-1.0f);GL11.glTexCoord2f(1.0f,0.0f);
-		GL11.glVertex2f(1.0f,1.0f);GL11.glTexCoord2f(1.0f,1.0f);
-		GL11.glVertex2f(-1.0f,1.0f);GL11.glTexCoord2f(0.0f,1.0f);
-		
-		GL11.glEnd();*/
 		
         GL11.glDrawElements(GL11.GL_TRIANGLES, 6, GL11.GL_UNSIGNED_INT, 0);
         
