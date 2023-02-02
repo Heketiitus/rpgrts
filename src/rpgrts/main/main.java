@@ -1,9 +1,13 @@
-package rpgrts;
+package rpgrts.main;
 
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWFramebufferSizeCallbackI;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
+
+import rpgrts.GameState;
+import rpgrts.Loader;
+import rpgrts.MainMenu;
 
 public class main {
 	
@@ -29,8 +33,8 @@ public class main {
 	public static int ukkeli;
 	public static int ukkeli2;
 	
-	public static int rwidth = 1920;
-	public static int rheight = 1080;
+	public static int rwidth = 1366;
+	public static int rheight = 768;
 	
 	Loader loader;
 	GameState current;

@@ -1,4 +1,4 @@
-package rpgrts;
+package rpgrts.world;
 
 public class Chunk {
 	Tile[][] tiles;

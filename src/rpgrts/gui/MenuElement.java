@@ -1,4 +1,4 @@
-package rpgrts;
+package rpgrts.gui;
 
 public abstract class MenuElement {
 	

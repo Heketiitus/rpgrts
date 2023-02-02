@@ -1,4 +1,4 @@
-package rpgrts;
+package rpgrts.stupidexception;
 
 public class StupidException extends Throwable {
 

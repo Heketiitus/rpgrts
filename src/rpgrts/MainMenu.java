@@ -6,6 +6,9 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengl.GL45;
 
+import rpgrts.main.main;
+import rpgrts.stupidexception.StupidException;
+
 public class MainMenu extends Menu {
 
 	
