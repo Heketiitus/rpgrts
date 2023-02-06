@@ -43,12 +43,12 @@ public class Shader {
 					src = src+(char)i;
 				}
 			}catch(IOException e) {
-				
+				e.printStackTrace();
 			}
 		}else {
 			System.out.println("file at " + file + " couldnt be found");
 		}
-		System.out.println("shader source loks like this \n" + src);
+		System.out.println("shader source of " + file + " loks like this \n" + src);
 		int shader = GL20.glCreateShader(shadertype);
 	    GL20.glShaderSource(shader, src);
 	    GL20.glCompileShader(shader);

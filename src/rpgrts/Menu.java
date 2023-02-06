@@ -7,9 +7,9 @@ import rpgrts.gui.MenuElement;
 public abstract class Menu extends GameState {
 
 	ArrayList<MenuElement> menuelements;
-	
-	public Menu(Renderer renderer) {
-		super(renderer);
+	MenuRenderinfo renderer;
+	public Menu(MenuRenderinfo renderer) {
+		this.renderer = renderer;
 		menuelements = new ArrayList<MenuElement>();
 	}
 	

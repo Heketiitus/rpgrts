@@ -2,10 +2,11 @@
 #version 460
 
 in vec2 TextureoutCoordinates;
+in vec4 color;
 out vec4 outcolor;
 
 uniform sampler2D textures;
 
 void main() {
-outcolor = texture(textures,TextureoutCoordinates);
+outcolor = texture(textures,TextureoutCoordinates)*color;
 }

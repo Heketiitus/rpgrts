@@ -2,10 +2,9 @@ package rpgrts;
 
 public abstract class GameState {
 
-	Renderer renderer;
 	
-	public GameState(Renderer renderer) {
-		this.renderer = renderer;
+	public GameState() {
+		
 	}
 	
 	public abstract void tick();

@@ -1,0 +1,18 @@
+
+#version 460
+
+layout (location=0) in vec2 coords;
+layout (location=1) in vec2 textcoords;
+
+uniform vec4 size;
+uniform vec4 location;
+uniform vec2 TextureIndex;
+uniform vec2 TextureSize;
+
+out vec2 frag_textcoords;
+
+void main() {
+gl_Position = vec4(coords,0.0,1.0)*size+location;
+//vec2 TextureIndex2 = vec2(TextureIndex.x,TextureSize.y-TextureIndex.y);
+frag_textcoords = TextureIndex/TextureSize+textcoords/TextureSize;
+}

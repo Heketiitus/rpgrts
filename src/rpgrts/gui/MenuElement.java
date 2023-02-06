@@ -1,13 +1,13 @@
 package rpgrts.gui;
 
-import rpgrts.Renderer;
+import rpgrts.MenuRenderinfo;
 
 public abstract class MenuElement {
 	
-	abstract void update();
-	abstract void render(Renderer r);
-	abstract void init();
-	abstract void cleanUp();
+	public abstract void update();
+	public abstract void render(MenuRenderinfo r);
+	public abstract void init();
+	public abstract void cleanUp();
 	
 	public MenuElement() {
 		init();

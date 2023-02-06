@@ -1,9 +1,6 @@
 package rpgrts;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.TileObserver;
-import java.awt.image.WritableRenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -14,23 +11,30 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL13;
-import org.lwjgl.opengl.GL30;
 
 public class Loader {
 
-	public static int[] textureatlas1;
+	public static int tileset;
 	public static int ukkeli;
-	public static int menubackground;
+	public static int[] menubackground;
 	public static int playbutton;
 	public static int settingsbutton;
-	public static int quitbutton;
+	public static int singleplayerbutton;
+	public static int multiplayerbutton;
+	public static int multiplayersingleplayerbranch;
 	
 	public void loadTextures() {
-		textureatlas1 = loadTextureSheet("res/textures/tileset.png",32,32);
+		//tileset = loadTextureSheet("res/textures/tileset.png",32,32);
+		tileset = loadTexture("res/textures/tileset.png");
 		ukkeli = loadTexture("res/textures/rölli.png");
-		menubackground = loadTexture("res/textures/menubackground.png");
-		playbutton = loadTexture("res/textures/play.png");
-		settingsbutton = loadTexture("res/textures/settings.png");
+		menubackground = new int[2];
+		menubackground[0] = loadTexture("res/textures/menu/menubackground1.png");
+		menubackground[1] = loadTexture("res/textures/menu/menubackground2.png");
+		playbutton = loadTexture("res/textures/menu/play2.png");
+		settingsbutton = loadTexture("res/textures/menu/settings.png");
+		multiplayersingleplayerbranch = loadTexture("res/textures/menu/menustick.png");
+		singleplayerbutton = loadTexture("res/textures/menu/singleplayer.png");
+		multiplayerbutton = loadTexture("res/textures/menu/multiplayer.png");
 	}
 	
 	public static int loadTexture(String src) {
@@ -53,14 +57,14 @@ public class Loader {
 				GL13.glActiveTexture(GL13.GL_TEXTURE0);
 				int texture = GL11.glGenTextures();
 				GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
-				//Setup wrap mode copied code
+				//Setup wrap mode
 				GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
 		        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
 
 		        //Setup texture scaling filtering
 		        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
 		        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
-				GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA8, img.getWidth(), img.getHeight(), 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, image);
+				GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA, img.getWidth(), img.getHeight(), 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, image);
 				System.out.println("texture " + texture + " created?");
 				
 				return texture;

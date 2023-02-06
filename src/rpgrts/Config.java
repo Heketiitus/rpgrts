@@ -11,7 +11,7 @@ public class Config {
 	int width = 1920;
 	int height = 1080;
 	int tps = 60;
-	
+	String savelocation ="res/saves/ ";
 	public int getWidth() {return width;};
 	public int getHeight() {return height;};
 	public int getTps() {return tps;};
@@ -38,6 +38,9 @@ public class Config {
 						case "tps":
 							config.tps = sc.nextInt();
 							break;
+						case "savelocation":
+							config.savelocation = sc.next();
+							break;
 						default:
 							System.out.println("default");
 						}
@@ -52,18 +55,19 @@ public class Config {
 		}else {
 			System.out.println("config doesnt exist");
 			config = new Config();
-			config.write(src);
+			config.create(src);
 			return config;
 		}
 		return null;
 	}
 	
-	void write(String dst) {
+	void create(String dst) {
 		try {
 			FileWriter fw = new FileWriter(new File(dst));
 			fw.write("width " + getWidth()+"\n");
 			fw.write("height " + getHeight()+"\n");
 			fw.write("tps " + getTps()+"\n");
+			fw.write("savelocation " + savelocation + "\n");
 			fw.flush();
 			fw.close();
 		} catch (IOException e) {
