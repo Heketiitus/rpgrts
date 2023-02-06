@@ -8,6 +8,7 @@ import rpgrts.Camera;
 import rpgrts.Game;
 import rpgrts.GameInfo;
 import rpgrts.Texture;
+import rpgrts.main.Main;
 
 public class Chunk {
 	int[][] tiles;
@@ -22,7 +23,7 @@ public class Chunk {
 		tiles = new int[width][height];
 		for(int x2 = 0; x2 < width; x2++) {
 			for(int y2 = 0; y2 < height; y2++) {
-				tiles[x2][y2] = (x2+y2*width  )%64;
+				tiles[x2][y2] = 63;
 			}
 		}
 	}
@@ -57,12 +58,12 @@ public class Chunk {
 				
 				Texture texture = gi.tiles[getTile(i,j)].texture;
 				GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTexture());
-				GL20.glUniform4fv(Game.tilerenderinfo.sizeuniform, new float[] {camera.zoom,camera.zoom,1.0f,1.0f});
-				GL20.glUniform4fv(Game.tilerenderinfo.positionuniform, new float[] {camera.zoom*x*2-1+camera.x,camera.zoom*y*2-1+camera.y,0,0});
+				GL20.glUniform4fv(Game.tilerenderinfo.sizeuniform, new float[] {camera.zoom/Main.displayinfo.getWidth(),camera.zoom/Main.displayinfo.getHeight(),1.0f,1.0f});
+				GL20.glUniform4fv(Game.tilerenderinfo.positionuniform, new float[] {(camera.zoom*x*2-1+camera.x*camera.zoom)/Main.displayinfo.getWidth(),(camera.zoom*y*2-1+camera.y*camera.zoom)/Main.displayinfo.getHeight(),0,0});
 				//GL20.glUniform2fv(Game.tilerenderinfo.texturesizeuniform, new float[] {texture.getTextureheight(),texture.getTexturewidth()});
 				//GL20.glUniform2fv(Game.tilerenderinfo.textureindexuniform, new float[] {texture.getTextureindex()%texture.getTexturewidth(),texture.getTextureindex()/texture.getTexturewidth()});
 				GL20.glUniform2fv(Game.tilerenderinfo.texturesizeuniform, new float[] {8,8});
-				GL20.glUniform2fv(Game.tilerenderinfo.textureindexuniform, new float[] {texture.getTextureindex()%texture.getTexturewidth(),texture.getTextureindex()/texture.getTexturewidth()});
+				GL20.glUniform2fv(Game.tilerenderinfo.textureindexuniform, new float[] {0.0f,7.0f});//texture.getTextureindex()%texture.getTexturewidth(),texture.getTextureindex()/texture.getTexturewidth()});
 				GL11.glDrawElements(GL11.GL_TRIANGLES, 6,GL11.GL_UNSIGNED_INT,0);
 				//System.out.println(getTile(x,y));
 		       

@@ -9,11 +9,11 @@ public class Camera {
 	public float zoom;
 	
 	public Camera() {
-		x = 0;
-		y = 0;
+		x = -96;
+		y = -96;
 		renderwidth = 6;
 		renderheight =6;
-		zoom = 1f/32f;
+		zoom = 10f;
 	}
 	
 }

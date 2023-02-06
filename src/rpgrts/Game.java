@@ -25,7 +25,10 @@ public class Game extends GameState {
 			wireframe = !wireframe;
 			System.out.println("esc presed");
 		}
-		float speed = 0.01f;
+		float speed;// = 0.3f;
+		if(Main.inputinfo.isKeyToggled(340)) {
+			speed = 0.6f;
+		}else speed = 0.3f;
 		if(Main.inputinfo.isKeyToggled(65)) {
 			camera.x+=speed;
 		}
@@ -37,13 +40,16 @@ public class Game extends GameState {
 		}
 		if(Main.inputinfo.isKeyToggled(83)) {
 			camera.y+=speed;
-		}
+		} 
 		if(Main.inputinfo.isKeyToggled(73)) {
-			camera.zoom -= camera.zoom*speed; 
+			camera.zoom -= camera.zoom*0.05; 
 		}
 		if(Main.inputinfo.isKeyToggled(79)) {
-			camera.zoom += camera.zoom*speed;
+			camera.zoom += camera.zoom*0.05;
 		}
+		int[] stwp = world.ScreenToWorldPosition(camera, Main.inputinfo.mouseX, Main.inputinfo.mouseY);
+		
+		System.out.println(stwp[0] + " " + stwp[1] + " " + stwp[2] + " " + stwp[3] + " " + stwp[4] + " " + stwp[5]);
 	}
 
 	@Override
@@ -64,7 +70,7 @@ public class Game extends GameState {
 		tilerenderinfo.init();
 		gi = new GameInfo();
 		gi.initTiles(); 
-		world = new World(16, 16,32,32);
+		world = new World(8,8,16,16);
 		for(int x = 0; x < world.width; x++) {
 			for(int y = 0; y < world.height; y++) {
 				world.createChunk(x, y);
