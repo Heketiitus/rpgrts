@@ -12,6 +12,8 @@ public class Game extends GameState {
 	Camera camera;
 	GameInfo gi;
 	boolean wireframe;
+	public static int testx;
+	public static int testy;
 	
 	public Game() {
 
@@ -20,14 +22,13 @@ public class Game extends GameState {
 
 	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
 		if(Main.inputinfo.isKeyPressed(256)) {
 			wireframe = !wireframe;
 			System.out.println("esc presed");
 		}
-		float speed;// = 0.3f;
+		float speed;
 		if(Main.inputinfo.isKeyToggled(340)) {
-			speed = 0.6f;
+			speed = 1f;
 		}else speed = 0.3f;
 		if(Main.inputinfo.isKeyToggled(65)) {
 			camera.x+=speed;
@@ -47,8 +48,19 @@ public class Game extends GameState {
 		if(Main.inputinfo.isKeyToggled(79)) {
 			camera.zoom += camera.zoom*0.05;
 		}
+		if(Main.inputinfo.scroll>0) {
+			for(int i = Main.inputinfo.scroll; i > 0; i--) {
+				camera.zoom += camera.zoom*0.1; 
+			}
+		}
+		if(Main.inputinfo.scroll<0) {
+			for(int i = Main.inputinfo.scroll; i < 0; i++) {
+				camera.zoom -= camera.zoom*0.1;
+			}
+		}
 		int[] stwp = world.ScreenToWorldPosition(camera, Main.inputinfo.mouseX, Main.inputinfo.mouseY);
-		
+		testx = stwp[2];
+		testy = stwp[3];
 		System.out.println(stwp[0] + " " + stwp[1] + " " + stwp[2] + " " + stwp[3] + " " + stwp[4] + " " + stwp[5]);
 	}
 
@@ -70,7 +82,7 @@ public class Game extends GameState {
 		tilerenderinfo.init();
 		gi = new GameInfo();
 		gi.initTiles(); 
-		world = new World(8,8,16,16);
+		world = new World(3,3,16,16);
 		for(int x = 0; x < world.width; x++) {
 			for(int y = 0; y < world.height; y++) {
 				world.createChunk(x, y);

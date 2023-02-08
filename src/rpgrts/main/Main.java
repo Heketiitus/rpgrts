@@ -5,6 +5,7 @@ import org.lwjgl.glfw.GLFWCursorPosCallbackI;
 import org.lwjgl.glfw.GLFWFramebufferSizeCallbackI;
 import org.lwjgl.glfw.GLFWKeyCallbackI;
 import org.lwjgl.glfw.GLFWMouseButtonCallbackI;
+import org.lwjgl.glfw.GLFWScrollCallbackI;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
@@ -136,6 +137,14 @@ public class Main {
 				displayinfo.updateScreen(arg1, arg2);
 				
 				
+			}
+		});
+		GLFW.glfwSetScrollCallback(window, new GLFWScrollCallbackI() {
+			
+			@Override
+			public void invoke(long arg0, double arg1, double arg2) {
+				System.out.println(arg0 + " " + arg1 + " " + arg2);
+				Main.inputinfo.scroll += arg2;
 			}
 		});
 		inputinfo = new InputInfo();

@@ -44,7 +44,6 @@ public class Texture {
 		this.texturewidth = width;
 		this.textureheight = height;
 		this.textureindex = index;
-		System.out.println("textureindex " + getTextureindex());
 	}
 	
 }

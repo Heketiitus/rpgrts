@@ -6,14 +6,19 @@ public class Camera {
 	public float y;
 	public int renderwidth;
 	public int renderheight;
+	//the coordinates of a corner of loaded chunks to assist in picking a block with your mouse
+	public int loadedChunkTop;
+	public int loadedChunkSide;
+	
 	public float zoom;
 	
+	
 	public Camera() {
-		x = -96;
-		y = -96;
-		renderwidth = 6;
-		renderheight =6;
-		zoom = 10f;
+		x = 0;
+		y = 0;
+		renderwidth = 2;
+		renderheight = 2;
+		zoom = 50f;
 	}
 	
 }

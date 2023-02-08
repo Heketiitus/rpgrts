@@ -6,6 +6,7 @@ public class InputInfo {
 	public double mouseY;
 	public boolean[] click;
 	public boolean[] clickheld;
+	public int scroll;
 	private boolean[] keysheld;
 	private boolean[] keys;
 	
@@ -19,12 +20,18 @@ public class InputInfo {
 		clickheld = new boolean[5];
 		keysheld = new boolean[maxKey-minKey];
 		keys = new boolean[maxKey-minKey];
+		scroll = 0;
+	}
+	
+	public void scroll(int scroll) {
+		this.scroll += scroll;
 	}
 	
 	public void tick() {
 		click = new boolean[5];
 		if(keysupdated)keys = new boolean[maxKey-minKey];
 		keysupdated = false;
+		scroll = 0;
 	}
 	
 	public void setKey(int keyCode) {

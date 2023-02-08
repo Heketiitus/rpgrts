@@ -2,14 +2,11 @@ package rpgrts.world;
 
 import java.io.File;
 
-import org.lwjgl.opengl.GL20;
-
 import rpgrts.Camera;
-import rpgrts.Game;
 import rpgrts.GameInfo;
 import rpgrts.main.Main;
 
-//if you want bigger/infinite worlds just remame this and create one that's even higher level, or do something better idk
+//if you want bigger/infinite worlds just remame this and create one that's even higher level, or do something better
 public class World {
 
 	
@@ -54,26 +51,25 @@ public class World {
 		}
 		
 	}
+	
 	//just in case its necessary for some reason to make chunks a one dimensional array.
 	public Chunk getChunk(int x,int y) {
 		return chunks[x][y];
 	}
 	
 	public int[] ScreenToWorldPosition(Camera cam, double mouseX, double mouseY) {
-		//x y chunkx chunky in chunk coordinates x and  y
+		
 		int[] ret = new int[6];
-		//size: 	camera.zoom/Main.displayinfo.getWidth()
-		//x: 		camera.zoom*x*2-1+camera.x*camera.zoom)/Main.displayinfo.getWidth()
-		//y:		camera.zoom*y*2-1+camera.y*camera.zoom)/Main.displayinfo.getHeight()
-		//System.out.println("cam.x " + cam.x + " " + (cam.x/cam.zoom+mouseX/cam.zoom));
-		int x = (int)(cam.x+mouseX/cam.zoom);
-		int y = (int) (cam.y+mouseY/cam.zoom);
+		
+		int x = (int)(-cam.x);
+		int y = (int) (cam.y/2);
 		ret[0] = x;
 		ret[1] = y;
-		ret[2] = x/cwidth;
-		ret[3] = y/cheight;
-		ret[4] = ret[0]-ret[2]*cwidth;
-		ret[5] = ret[1]-Math.abs(ret[3])*cheight;
+		ret[2] = (int)Math.round((-Main.displayinfo.getWidth()/2)/(cam.zoom/2)+(Main.inputinfo.mouseX)/(cam.zoom/2)-cam.x);
+		ret[3] = (int)Math.round((Main.displayinfo.getHeight()/2)/(cam.zoom/2)-(Main.inputinfo.mouseY)/(cam.zoom/2)-cam.y);
+		
+		ret[4] = (int)(cam.zoom/mouseX);
+		ret[5] = (int)(cam.zoom/mouseY);
 		return ret;
 	}
 	

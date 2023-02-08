@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Config {
 	
-	int width = 1920;
-	int height = 1080;
+	int width = 500;
+	int height = 500;
 	int tps = 60;
 	String savelocation ="res/saves/ ";
 	public int getWidth() {return width;};

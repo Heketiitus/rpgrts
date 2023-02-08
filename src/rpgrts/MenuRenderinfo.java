@@ -44,8 +44,7 @@ public class MenuRenderinfo {
 		shader.createProgram();
 		shader.loadVertexShader("res/shaders/menuVertexShader.txt");
 		shader.loadFragmentShader("res/shaders/menuFragmentShader.txt");
-		shader.linkProgram();							
-		//uniform = GL20.glGetUniformLocation(s.vertexShader, "transformation");
+		shader.linkProgram();
 		try{
 			sizeuniform = getUniform(shader.program, "size");
 			positionuniform = getUniform(shader.program,"location");
