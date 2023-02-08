@@ -56,10 +56,7 @@ public class Chunk {
 				GL30.glBindVertexArray(Game.tilerenderinfo.tileVAO);
 				GL20.glUseProgram(Game.tilerenderinfo.shader.program);
 				GL11.glEnable(GL11.GL_TEXTURE_2D);
-				Texture texture;
-				if(x==Game.testx&&y==Game.testy)
-				texture = gi.tiles[getTile(i,j)].texture;
-				else texture = new Texture(Loader.tileset, 1, 1, 0);
+				Texture texture = gi.tiles[getTile(i,j)].texture;
 				GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTexture());
 				GL20.glUniform4fv(Game.tilerenderinfo.sizeuniform, new float[] {camera.zoom/Main.displayinfo.getWidth()/2,camera.zoom/Main.displayinfo.getHeight()/2,1.0f,1.0f});
 				GL20.glUniform4fv(Game.tilerenderinfo.positionuniform, new float[] {(camera.zoom*x+camera.x*camera.zoom)/Main.displayinfo.getWidth(),(camera.zoom*y+camera.y*camera.zoom)/Main.displayinfo.getHeight(),0,0});

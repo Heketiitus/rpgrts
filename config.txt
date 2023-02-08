@@ -1,4 +1,0 @@
-width 500
-height 5000
-tps 60
-savelocation res/saves/ 

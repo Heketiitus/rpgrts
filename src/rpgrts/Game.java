@@ -12,8 +12,6 @@ public class Game extends GameState {
 	Camera camera;
 	GameInfo gi;
 	boolean wireframe;
-	public static int testx;
-	public static int testy;
 	
 	public Game() {
 
@@ -58,10 +56,6 @@ public class Game extends GameState {
 				camera.zoom -= camera.zoom*0.1;
 			}
 		}
-		int[] stwp = world.ScreenToWorldPosition(camera, Main.inputinfo.mouseX, Main.inputinfo.mouseY);
-		testx = stwp[2];
-		testy = stwp[3];
-		System.out.println(stwp[0] + " " + stwp[1] + " " + stwp[2] + " " + stwp[3] + " " + stwp[4] + " " + stwp[5]);
 	}
 
 	@Override
