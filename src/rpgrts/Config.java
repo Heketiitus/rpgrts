@@ -11,7 +11,7 @@ public class Config {
 	int width = 256;
 	int height = 144;
 	int tps = 60;
-	String texturelocation = "res/textures/menu/";
+	String texturelocation = "res/textures/";
 	String savelocation ="res/saves/";
 	public int getWidth() {return width;}
 	public int getHeight() {return height;}
