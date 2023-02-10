@@ -26,8 +26,8 @@ public class Game extends GameState {
 		}
 		float speed;
 		if(Main.inputinfo.isKeyToggled(340)) {
-			speed = 1f;
-		}else speed = 0.3f;
+			speed = 0.3f;
+		}else speed = 0.03f;
 		if(Main.inputinfo.isKeyToggled(65)) {
 			camera.x+=speed;
 		}
@@ -56,6 +56,7 @@ public class Game extends GameState {
 				camera.zoom -= camera.zoom*0.1;
 			}
 		}
+		
 	}
 
 	@Override
@@ -72,11 +73,13 @@ public class Game extends GameState {
 
 	@Override
 	public void init() {
+
+		GL11.glClearColor(0.85f, 0.85f, 0.85f, 0.0f);
 		tilerenderinfo = new TileRenderInfo();
 		tilerenderinfo.init();
 		gi = new GameInfo();
 		gi.initTiles(); 
-		world = new World(3,3,16,16);
+		world = new World(3,3,32,32);
 		for(int x = 0; x < world.width; x++) {
 			for(int y = 0; y < world.height; y++) {
 				world.createChunk(x, y);
@@ -88,7 +91,8 @@ public class Game extends GameState {
 
 	@Override
 	public void cleanUp() {
-		// TODO Auto-generated method stub
+		System.out.println("cleaning up game");
+		world.cleanUp();
 		
 	}
 

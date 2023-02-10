@@ -2,6 +2,8 @@ package rpgrts.world;
 
 import java.io.File;
 
+import org.lwjgl.opengl.GL20;
+
 import rpgrts.Camera;
 import rpgrts.GameInfo;
 import rpgrts.main.Main;
@@ -26,12 +28,12 @@ public class World {
 	
 	public void render(Camera camera, GameInfo gi) {
 
-
 		for(int x = 0; x < camera.renderwidth; x++) {
 			for(int y = 0; y < camera.renderheight; y++) {
 				chunks[x][y].render(gi, camera);
 			}
 		}
+
 	}
 	
 	public static World loadWorld(String src) {
@@ -57,19 +59,20 @@ public class World {
 		return chunks[x][y];
 	}
 	
-	public int[] ScreenToWorldPosition(Camera cam, double mouseX, double mouseY) {
+	public int[] ScreenToWorldPosition(Camera cam, double screenX, double screenY) {
 		
 		int[] ret = new int[6];
 		
-		int x = (int)(-cam.x);
-		int y = (int) (cam.y/2);
+		int x = (int)(cam.x*cwidth);
+		int y = (int) (cam.y*cheight);
 		ret[0] = x;
 		ret[1] = y;
-		ret[2] = (int)Math.round((-Main.displayinfo.getWidth()/2)/(cam.zoom/2)+(Main.inputinfo.mouseX)/(cam.zoom/2)-cam.x);
-		ret[3] = (int)Math.round((Main.displayinfo.getHeight()/2)/(cam.zoom/2)-(Main.inputinfo.mouseY)/(cam.zoom/2)-cam.y);
 		
-		ret[4] = (int)(cam.zoom/mouseX);
-		ret[5] = (int)(cam.zoom/mouseY);
+		ret[2] = (int)Math.round((-Main.displayinfo.getWidth()/2)/(cam.zoom/2)+screenX/(cam.zoom/2)-cam.x*cwidth+(float)(cwidth-1)/2);
+		ret[3] = (int)Math.round((Main.displayinfo.getHeight()/2)/(cam.zoom/2)-screenY/(cam.zoom/2)-cam.y*cheight+(float)(cheight-1)/2);
+		
+		ret[4] = (int)(cam.zoom/screenX);
+		ret[5] = (int)(cam.zoom/screenY);
 		return ret;
 	}
 	
@@ -88,6 +91,14 @@ public class World {
 		int cy = y/cheight;
 		chunks[cx][cy].setTile(i, x-cx*cwidth, y-cy*cheight);
 		
+	}
+	
+	public void cleanUp() {
+		for(int x = 0; x < width; x++) {
+			for(int y = 0; y < height; y++) {
+				chunks[x][y].cleanUp();
+			}
+		}
 	}
 	
 }

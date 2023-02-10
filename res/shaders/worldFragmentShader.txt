@@ -1,0 +1,11 @@
+
+#version 460
+
+in vec2 frag_textcoords;
+out vec4 outcolor;
+
+uniform sampler2D textures;
+
+void main() {
+outcolor = texture(textures,frag_textcoords);
+}

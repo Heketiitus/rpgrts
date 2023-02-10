@@ -1,0 +1,12 @@
+
+#version 460
+
+layout (location=0) in vec2 coords;
+layout (location=1) in vec2 textcoords;
+
+out vec2 frag_textcoords;
+
+void main() {
+gl_Position = vec4(coords,0.0,1.0);
+frag_textcoords = textcoords;
+}

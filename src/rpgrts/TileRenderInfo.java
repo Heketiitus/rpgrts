@@ -17,6 +17,7 @@ public class TileRenderInfo {
 	public int tileVAO;
 	public int tileVBO;
 	public int VEO;
+	public int tilesize;
 	float[] square = {
 			-1f,-1f,	0.0f,0.0f,
 			-1f,1f,		0.0f,1.0f,
@@ -26,6 +27,11 @@ public class TileRenderInfo {
 	int[] indices = {
 			2,0,1,2,3,1
 	};
+	
+	public void cleanUp() {
+		
+	}
+	
 	public void init() {
 
 		shader = new Shader();
@@ -55,10 +61,11 @@ public class TileRenderInfo {
 		GL20.glVertexAttribPointer(1, 2, GL11.GL_FLOAT, false, 4*4, 2*4);
 		GL20.glEnableVertexAttribArray(0);
 		GL20.glEnableVertexAttribArray(1);
-
 		
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA); 
 		GL11.glEnable(GL11.GL_BLEND);
+		
+		tilesize = 32;
 		
 	}
 	//shared code between menurenderer and tilerenderer please movve into some other place

@@ -106,7 +106,7 @@ public class Main {
 			GLFW.glfwPollEvents();
 		}
 		cleanUp();
-		System.out.println("program ran for " + (System.nanoTime()-start)/second + " seconds, probably, totaling " + k + " frames, " + (System.nanoTime()-start)/second*targetfps);
+		System.out.println("program ran for " + (System.nanoTime()-start)/second + " seconds, probably, totaling " + k + " ticks, " + (System.nanoTime()-start)/second*targetfps);
 	}
 	
 	public void init() {
