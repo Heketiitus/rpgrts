@@ -1,0 +1,31 @@
+
+#version 460
+
+layout (location=0) in vec2 position;
+layout (location=1) in vec2 textcoords;
+
+uniform float rot;
+uniform vec4 size;
+uniform vec4 location;
+uniform vec2 TextureIndex;
+uniform vec2 TextureSize;
+
+out vec2 frag_textcoords;
+
+vec2 rotateUV(vec2 uv, float rotation, vec2 mid)
+{
+    float cosAngle = cos(rotation);
+    float sinAngle = sin(rotation);
+    return vec2(
+        cosAngle * (uv.x - mid.x) + sinAngle * (uv.y - mid.y) + mid.x,
+        cosAngle * (uv.y - mid.y) - sinAngle * (uv.x - mid.x) + mid.y
+    );
+}
+
+void main() {
+gl_Position = vec4(position,0.0,1.0)*size+location;
+vec2 text = TextureIndex/TextureSize+textcoords/TextureSize;
+frag_textcoords = rotateUV(text,rot,TextureIndex/TextureSize+1/TextureSize/2);
+}
+
+

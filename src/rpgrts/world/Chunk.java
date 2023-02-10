@@ -5,7 +5,6 @@ import java.nio.ByteBuffer;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL13;
-import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
@@ -33,7 +32,8 @@ public class Chunk {
 		tiles = new int[width][height];
 		for(int x2 = 0; x2 < width; x2++) {
 			for(int y2 = 0; y2 < height; y2++) {
-				tiles[x2][y2] = (int)Math.round(Math.random()*63);
+				//tiles[x2][y2] = 56;
+				tiles[x2][y2] = 13;
 			}
 		}
 		outdated = true;
@@ -74,6 +74,7 @@ public class Chunk {
 		GL11.glViewport(0, 0, width*Game.tilerenderinfo.tilesize, width*Game.tilerenderinfo.tilesize);
 		for(int i = 0; i < width; i++) {
 			for(int j = 0; j < height; j++) {
+
 				
 				int x = this.x*width+i;
 				int y = this.y*width+j;
@@ -87,6 +88,7 @@ public class Chunk {
 				GL20.glUniform4fv(Game.tilerenderinfo.positionuniform, new float[] {(float)(i*2-width+1)/(float)(width),(float)(j*2.0f-height+1)/(float)(height),0,0});
 				GL20.glUniform2fv(Game.tilerenderinfo.texturesizeuniform, new float[] {texture.getTexturewidth(),texture.getTextureheight()});
 				GL20.glUniform2fv(Game.tilerenderinfo.textureindexuniform, new float[] {texture.getTextureindex()%texture.getTexturewidth(),texture.getTextureindex()/texture.getTextureheight()});
+				
 				GL11.glDrawElements(GL11.GL_TRIANGLES, 6,GL11.GL_UNSIGNED_INT,0);
 				
 			}
@@ -107,7 +109,7 @@ public class Chunk {
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
 		texture = GL11.glGenTextures();
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
-		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST_MIPMAP_LINEAR);
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);

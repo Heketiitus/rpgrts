@@ -172,7 +172,7 @@ public class Main {
 		});
 		GL.createCapabilities();
 		loader = new Loader();
-		loader.loadTextures();
+		loader.loadTextures(config.getTextureLocation());
 		
 	}
 	

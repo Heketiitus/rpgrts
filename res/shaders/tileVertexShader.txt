@@ -13,6 +13,5 @@ out vec2 frag_textcoords;
 
 void main() {
 gl_Position = vec4(coords,0.0,1.0)*size+location;
-//vec2 TextureIndex2 = vec2(TextureIndex.x,TextureSize.y-TextureIndex.y);
 frag_textcoords = TextureIndex/TextureSize+textcoords/TextureSize;
 }
