@@ -92,6 +92,8 @@ public class Chunk {
 			}
 		}
 
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
+		GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
 		GL30.glBindFramebuffer(GL30.GL_FRAMEBUFFER, 0);
 		GL11.glViewport(0, 0, (int)Main.displayinfo.getWidth(), (int)Main.displayinfo.getHeight());
 		outdated = false;
@@ -105,13 +107,14 @@ public class Chunk {
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
 		texture = GL11.glGenTextures();
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
-		
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
-		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST_MIPMAP_LINEAR);
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
 		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
 		
 		GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA, width*Game.tilerenderinfo.tilesize, height*Game.tilerenderinfo.tilesize, 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, (ByteBuffer)null);
+
+		GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
 		GL30.glFramebufferTexture2D(GL30.GL_FRAMEBUFFER,GL30.GL_COLOR_ATTACHMENT0, GL11.GL_TEXTURE_2D, texture, 0); 
 		if(GL30.glCheckFramebufferStatus(GL30.GL_FRAMEBUFFER) == GL30.GL_FRAMEBUFFER_COMPLETE) System.out.println("framebuffer  complete");	
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);

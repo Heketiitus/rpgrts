@@ -79,7 +79,7 @@ public class Game extends GameState {
 		tilerenderinfo.init();
 		gi = new GameInfo();
 		gi.initTiles(); 
-		world = new World(3,3,32,32);
+		world = new World(5,5,32,32);
 		for(int x = 0; x < world.width; x++) {
 			for(int y = 0; y < world.height; y++) {
 				world.createChunk(x, y);

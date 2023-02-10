@@ -16,8 +16,8 @@ public class Camera {
 	public Camera() {
 		x = 0;
 		y = 0;
-		renderwidth = 2;
-		renderheight = 2;
+		renderwidth = 5;
+		renderheight = 5;
 		zoom = 50f;
 	}
 	
