@@ -72,7 +72,7 @@ public class Config {
 			fw.write("height " + getHeight()+"\n");
 			fw.write("tps " + getTps()+"\n");
 			fw.write("savelocation " + savelocation + "\n");
-			fw.write("texturelocation"+texturelocation+"\n");
+			fw.write("texturelocation "+texturelocation+"\n");
 			fw.flush();
 			fw.close();
 		} catch (IOException e) {
