@@ -5,7 +5,7 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
 import rpgrts.main.Main;
-import rpgrts.renderiing.MenuRenderinfo;
+import rpgrts.rendering.MenuRenderinfo;
 
 public class Button extends MenuElement {
 

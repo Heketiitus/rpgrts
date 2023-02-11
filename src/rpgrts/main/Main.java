@@ -16,7 +16,7 @@ import rpgrts.Loader;
 import rpgrts.main.gamestates.Game;
 import rpgrts.main.gamestates.GameState;
 import rpgrts.main.gamestates.MainMenu;
-import rpgrts.renderiing.MenuRenderinfo;
+import rpgrts.rendering.MenuRenderinfo;
 
 public class Main {
 	

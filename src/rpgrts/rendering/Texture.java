@@ -1,4 +1,4 @@
-package rpgrts.renderiing;
+package rpgrts.rendering;
 
 public class Texture {
 

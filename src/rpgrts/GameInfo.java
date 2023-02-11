@@ -1,6 +1,6 @@
 package rpgrts;
 
-import rpgrts.renderiing.Texture;
+import rpgrts.rendering.Texture;
 import rpgrts.world.Tile;
 
 public class GameInfo {

@@ -12,7 +12,7 @@ import rpgrts.Camera;
 import rpgrts.GameInfo;
 import rpgrts.main.Main;
 import rpgrts.main.gamestates.Game;
-import rpgrts.renderiing.Texture;
+import rpgrts.rendering.Texture;
 
 public class Chunk {
 	int[][] tiles;

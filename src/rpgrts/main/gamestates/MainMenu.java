@@ -9,7 +9,7 @@ import rpgrts.gui.Button;
 import rpgrts.gui.MenuElement;
 import rpgrts.gui.HiddenMenuButton;
 import rpgrts.main.Main;
-import rpgrts.renderiing.MenuRenderinfo;
+import rpgrts.rendering.MenuRenderinfo;
 
 public class MainMenu extends Menu {
 	float x = 0;

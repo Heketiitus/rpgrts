@@ -1,4 +1,4 @@
-package rpgrts.renderiing;
+package rpgrts.rendering;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;

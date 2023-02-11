@@ -1,6 +1,6 @@
 package rpgrts.gui;
 
-import rpgrts.renderiing.MenuRenderinfo;
+import rpgrts.rendering.MenuRenderinfo;
 
 public abstract class MenuElement {
 	

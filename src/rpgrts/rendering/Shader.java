@@ -1,4 +1,4 @@
-package rpgrts.renderiing;
+package rpgrts.rendering;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,8 +1,11 @@
 package rpgrts;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 import javax.imageio.ImageIO;
@@ -11,6 +14,8 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL13;
+
+import com.sun.tools.javac.Main;
 
 public class Loader {
 
@@ -23,6 +28,7 @@ public class Loader {
 	public static int multiplayerbutton;
 	public static int multiplayersingleplayerbranch;
 	public static int guibackground;
+	public static Font test;
 	
 	public void loadTextures(String sourcefolder) {
 		//tileset = loadTextureSheet("res/textures/tileset.png",32,32);
@@ -37,7 +43,10 @@ public class Loader {
 		singleplayerbutton = loadTexture(sourcefolder+"menu/singleplayer.png");
 		multiplayerbutton = loadTexture(sourcefolder+"menu/multiplayer.png");
 		guibackground = loadTexture(sourcefolder+"menu/ForNowGui.png");
+		test = loadFont(sourcefolder+"fonts/Paper-SnowFlakes.otf",Font.TRUETYPE_FONT);
+	
 	}
+	
 	
 	
 	public static int loadTexture(String src) {
@@ -127,6 +136,22 @@ public class Loader {
 		}else {
 			System.out.println("could not find file " + src);
 		}return null;
+	}
+
+
+	public static Font loadFont(String src,int format) {
+		
+		try {
+			Font res = Font.createFont(format, new File(src));
+			return res;
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 

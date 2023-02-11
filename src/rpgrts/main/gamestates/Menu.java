@@ -3,7 +3,7 @@ package rpgrts.main.gamestates;
 import java.util.ArrayList;
 
 import rpgrts.gui.MenuElement;
-import rpgrts.renderiing.MenuRenderinfo;
+import rpgrts.rendering.MenuRenderinfo;
 
 public abstract class Menu extends GameState {
 

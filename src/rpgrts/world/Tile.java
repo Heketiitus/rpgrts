@@ -1,6 +1,6 @@
 package rpgrts.world;
 
-import rpgrts.renderiing.Texture;
+import rpgrts.rendering.Texture;
 
 //tile specification
 public class Tile {

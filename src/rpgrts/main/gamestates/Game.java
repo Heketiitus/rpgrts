@@ -7,8 +7,8 @@ import org.lwjgl.opengl.GL30;
 import rpgrts.Camera;
 import rpgrts.GameInfo;
 import rpgrts.main.Main;
-import rpgrts.renderiing.GuiRenderInfo;
-import rpgrts.renderiing.TileRenderInfo;
+import rpgrts.rendering.GuiRenderInfo;
+import rpgrts.rendering.TileRenderInfo;
 import rpgrts.world.World;
 
 public class Game extends GameState {
@@ -73,7 +73,8 @@ public class Game extends GameState {
 		GL11.glPolygonMode( GL11.GL_FRONT_AND_BACK, GL11.GL_LINE );
 		else GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
 		world.render(camera, gi);
-		guirenderinfo.renderGui(0, 0, 25, 2, 64);
+
+		guirenderinfo.renderGui(0, 0, 25, 20, 64);
 	}
 	
 	
