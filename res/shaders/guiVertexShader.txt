@@ -24,8 +24,8 @@ vec2 rotateUV(vec2 uv, float rotation, vec2 mid)
 
 void main() {
 gl_Position = vec4(position,0.0,1.0)*size+location;
-vec2 text = TextureIndex/TextureSize+textcoords/TextureSize;
-frag_textcoords = rotateUV(text,rot,TextureIndex/TextureSize+1/TextureSize/2);
+vec2 text = rotateUV(textcoords,rot,vec2(0.5,0.5));
+frag_textcoords = TextureIndex/TextureSize+text/TextureSize;
 }
 
 
