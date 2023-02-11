@@ -11,12 +11,12 @@ import org.lwjgl.opengl.GL11;
 
 import rpgrts.Config;
 import rpgrts.DisplayInfo;
-import rpgrts.Game;
-import rpgrts.GameState;
 import rpgrts.InputInfo;
 import rpgrts.Loader;
-import rpgrts.MainMenu;
-import rpgrts.MenuRenderinfo;
+import rpgrts.main.gamestates.Game;
+import rpgrts.main.gamestates.GameState;
+import rpgrts.main.gamestates.MainMenu;
+import rpgrts.renderiing.MenuRenderinfo;
 
 public class Main {
 	

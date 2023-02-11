@@ -2,7 +2,7 @@ package rpgrts.gui;
 
 import java.util.ArrayList;
 
-import rpgrts.MenuRenderinfo;
+import rpgrts.renderiing.MenuRenderinfo;
 
 public class HiddenMenuThing extends MenuElement {
 

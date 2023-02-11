@@ -1,4 +1,4 @@
-package rpgrts;
+package rpgrts.renderiing;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;

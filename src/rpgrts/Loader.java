@@ -36,7 +36,7 @@ public class Loader {
 		multiplayersingleplayerbranch = loadTexture(sourcefolder+"menu/menustick.png");
 		singleplayerbutton = loadTexture(sourcefolder+"menu/singleplayer.png");
 		multiplayerbutton = loadTexture(sourcefolder+"menu/multiplayer.png");
-		guibackground = loadTexture(sourcefolder+"menu/ForNowGui2.png");
+		guibackground = loadTexture(sourcefolder+"menu/ForNowGui.png");
 	}
 	
 	

@@ -9,10 +9,10 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
 import rpgrts.Camera;
-import rpgrts.Game;
 import rpgrts.GameInfo;
-import rpgrts.Texture;
 import rpgrts.main.Main;
+import rpgrts.main.gamestates.Game;
+import rpgrts.renderiing.Texture;
 
 public class Chunk {
 	int[][] tiles;

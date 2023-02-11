@@ -1,7 +1,16 @@
-package rpgrts;
+package rpgrts.main.gamestates;
+
+
 
 public class WorldEditor extends GameState{
-
+	
+	Game game;
+	
+	public WorldEditor(Game game) {
+		
+		this.game = game;
+	}
+	
 	@Override
 	public void tick() {
 		// TODO Auto-generated method stub
@@ -10,8 +19,8 @@ public class WorldEditor extends GameState{
 
 	@Override
 	public void render() {
-		// TODO Auto-generated method stub
 		
+		game.render();
 	}
 
 	@Override

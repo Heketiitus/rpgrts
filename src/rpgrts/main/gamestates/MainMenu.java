@@ -1,13 +1,15 @@
-package rpgrts;
+package rpgrts.main.gamestates;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
+import rpgrts.Loader;
 import rpgrts.gui.Button;
 import rpgrts.gui.MenuElement;
 import rpgrts.gui.HiddenMenuButton;
 import rpgrts.main.Main;
+import rpgrts.renderiing.MenuRenderinfo;
 
 public class MainMenu extends Menu {
 	float x = 0;

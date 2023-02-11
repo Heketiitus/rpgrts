@@ -1,10 +1,14 @@
-package rpgrts;
+package rpgrts.main.gamestates;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
+import rpgrts.Camera;
+import rpgrts.GameInfo;
 import rpgrts.main.Main;
+import rpgrts.renderiing.GuiRenderInfo;
+import rpgrts.renderiing.TileRenderInfo;
 import rpgrts.world.World;
 
 public class Game extends GameState {
@@ -15,8 +19,6 @@ public class Game extends GameState {
 	Camera camera;
 	GameInfo gi;
 	boolean wireframe;
-	public static int angle =0;
-	int tick = 0;
 	public Game() {
 
 	
@@ -60,10 +62,6 @@ public class Game extends GameState {
 				camera.zoom -= camera.zoom*0.1;
 			}
 		}
-		tick++;
-		if(tick%3==0)
-		angle ++;
-		if(angle==360) angle = 0;
 	}
 
 	@Override
@@ -75,7 +73,7 @@ public class Game extends GameState {
 		GL11.glPolygonMode( GL11.GL_FRONT_AND_BACK, GL11.GL_LINE );
 		else GL11.glPolygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
 		world.render(camera, gi);
-		guirenderinfo.renderGui(0, 0, 1, 1, 100);
+		guirenderinfo.renderGui(0, 0, 25, 2, 64);
 	}
 	
 	
