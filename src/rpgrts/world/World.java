@@ -2,8 +2,6 @@ package rpgrts.world;
 
 import java.io.File;
 
-import org.lwjgl.opengl.GL20;
-
 import rpgrts.Camera;
 import rpgrts.GameInfo;
 import rpgrts.main.Main;

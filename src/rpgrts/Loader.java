@@ -28,7 +28,6 @@ public class Loader {
 	public static int multiplayerbutton;
 	public static int multiplayersingleplayerbranch;
 	public static int guibackground;
-	public static Font test;
 	
 	public void loadTextures(String sourcefolder) {
 		//tileset = loadTextureSheet("res/textures/tileset.png",32,32);
@@ -43,7 +42,6 @@ public class Loader {
 		singleplayerbutton = loadTexture(sourcefolder+"menu/singleplayer.png");
 		multiplayerbutton = loadTexture(sourcefolder+"menu/multiplayer.png");
 		guibackground = loadTexture(sourcefolder+"menu/ForNowGui.png");
-		test = loadFont(sourcefolder+"fonts/Paper-SnowFlakes.otf",Font.TRUETYPE_FONT);
 	
 	}
 	
